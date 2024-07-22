@@ -23,8 +23,8 @@ def load_csv(file):
 
 # Função de cálculo de métricas
 def calculate_metrics(df):
+    depo = df['BALANCE'][0]
     metrics = {
-        depo = df['BALANCE'][0],
         "Deposito": df['BALANCE'][0],
         "Lucro Bruto": (df['BALANCE']-depo).sum(),
         "Max Balance": df['BALANCE'].max(),
