@@ -58,6 +58,7 @@ st.markdown(
             align-items: left;
             background-color: #000;
             padding-left: 1em;
+            width: 100%;
         }
         .logo img {
             max-width: 100%;
