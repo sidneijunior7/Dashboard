@@ -83,7 +83,7 @@ st.markdown(
 st.markdown(
     """
     <div class="logo">
-        <img src="" alt="Logotipo">
+        <img src="" alt="Logotipo"></img>
     </div>
     """,
     unsafe_allow_html=True
