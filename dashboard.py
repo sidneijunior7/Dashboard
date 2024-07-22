@@ -52,14 +52,15 @@ st.set_page_config(layout="wide")
 st.markdown(
     """
     <style>
-        .main{
+        .content{
             max-width:70%;
             margin: auto;
-            overflow-y: scroll !important;
         }
     </style>
+    <div class="content">
     """,unsafe_allow_html=True
 )
+
 st.title("Painel de Controle de Investimentos")
 st.subheader("Visão Geral")
 st.write("""
