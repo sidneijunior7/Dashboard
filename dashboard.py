@@ -53,9 +53,10 @@ st.markdown(
     """
     <style>
         .main{
-            max-width:70%;
+            max-width:75%;
             margin: auto;
-            overflow: scroll !important;
+            overflow: auto !important;
+            
         }
     </style>
     
