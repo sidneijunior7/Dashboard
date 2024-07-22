@@ -52,16 +52,12 @@ st.set_page_config(layout="wide")
 st.markdown(
     """
     <style>
-        .content{
-            max-width: 70% !important;
-            margin: auto;
-            overflow: auto;
-        }
+        
         /* Identificar o tema claro ou escuro */
-        .dark-theme .logo::before {
+        .dark-theme .logo img{
             content: url("https://academiadosinvestidores.com.br/wp-content/uploads/2024/07/watermark-e1720301832642.png") !important;
         }
-        .light-theme .logo::before {
+        .light-theme .logo img{
             content: url("https://academiadosinvestidores.com.br/wp-content/uploads/2024/07/logo_header-e1720357655763.webp") !important;
         }
         /* Estilo geral do logotipo */
@@ -70,10 +66,6 @@ st.markdown(
             display: flex;
             justify-content: center;
             padding: 10px 0;
-        }
-        .logo img {
-            max-width: auto;
-            height: auto;
         }
         
     </style>
@@ -106,11 +98,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-st.markdown(
-    """
-    <div class="content">
-    """, unsafe_allow_html=True
-)
+
 st.title("Painel de Controle de Investimentos")
 st.subheader("Visão Geral")
 st.write("""
