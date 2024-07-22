@@ -52,9 +52,10 @@ st.set_page_config(layout="wide")
 st.markdown(
     """
     <style>
-        .body{
+        .main{
             max-width:70%;
             margin: auto;
+            overflow: visible;
         }
     </style>
     
