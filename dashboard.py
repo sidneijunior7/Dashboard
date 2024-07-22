@@ -73,15 +73,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Adicionar o logotipo no topo
-st.markdown(
-    """
-    <div class="logo">
-        <img src="" alt="Logotipo"></img>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+
 
 # Código para detectar o tema e aplicar a classe apropriada
 st.markdown(
@@ -98,7 +90,15 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
+# Adicionar o logotipo no topo
+st.markdown(
+    """
+    <div class="logo">
+        <img src="" alt="Logotipo"></img>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 st.title("Painel de Controle de Investimentos")
 st.subheader("Visão Geral")
 st.write("""
