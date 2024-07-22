@@ -52,9 +52,17 @@ if uploaded_file is not None:
 
     # Exibir métricas
     st.subheader("Métricas Calculadas")
-    for key, value in metrics.items():
-        st.write(f"{key}: {value}")
+    #for key, value in metrics.items():
+    #    st.write(f"{key}: {value}")
 
+    col1, col2 = st.columns(2);
+    with col1:
+        st.metric(label="Lucro: ", value=metrics['Lucro Bruto'])
+        st.metric(label="Lucro Max: ", value=metrics['Lucro Máximo'])
+    with col2:
+        st.metric(label="Maior prejuízo: ", value=metrics['Drawdown Relativo'])
+        st.metric(label="Depósito: ", value=metrics['Deposito'])
+        
     # Plotar gráficos
     st.subheader("Gráficos")
     st.line_chart(df.set_index('DATE')['BALANCE'] - (df['BALANCE'][0]))
