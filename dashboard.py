@@ -59,8 +59,9 @@ st.markdown(
     .logo {
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: left;
         background-color: #000;
+        padding-left: 1em;
     }
     .logo img {
         max-width: 100%;
@@ -137,5 +138,4 @@ if uploaded_file is not None:
     # Plotar gráficos
     #st.subheader("Gráficos")
     #st.line_chart(df.set_index('DATE')['BALANCE'] - (df['BALANCE'][0]))
-
-st.markdown('</div>',unsafe_allow_html=True)    
+   
