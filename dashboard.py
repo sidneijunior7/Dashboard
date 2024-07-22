@@ -55,7 +55,7 @@ st.markdown(
         .main{
             max-width:70%;
             margin: auto;
-            overflow: visible;
+            overflow: auto !important;
         }
     </style>
     
