@@ -59,6 +59,24 @@ st.set_page_config(
         'About': "# This is a header. This is an *extremely* cool app!"
     }
 )
+
+# Adicionar a sidebar
+st.sidebar.title("Menu Lateral")
+
+# Adicionar itens à sidebar
+st.sidebar.header("Navegação")
+selected_option = st.sidebar.radio("Escolha uma opção", ["Página Inicial", "Sobre", "Contato"])
+
+if selected_option == "Página Inicial":
+    st.title("Página Inicial")
+    st.write("Bem-vindo à página inicial! Adicione conteúdo aqui.")
+elif selected_option == "Sobre":
+    st.title("Sobre")
+    st.write("Esta é a seção Sobre. Adicione informações sobre o aplicativo ou a empresa aqui.")
+elif selected_option == "Contato":
+    st.title("Contato")
+    st.write("Esta é a seção de Contato. Adicione informações de contato ou um formulário aqui.")
+
 st.subheader("BackTest Tools")
 st.write("""
 Este painel apresenta métricas e gráficos importantes para monitorar o desempenho dos seus investimentos.
@@ -73,9 +91,6 @@ if uploaded_file is not None:
     
 # Adicionar um seletor de data
     st.subheader("Filtrar por Data")
-    
-    
-    
     col01, col02 = st.columns(2)
     with col01:
         start_date = st.date_input("Data de Início", df['DATE'].min().date())
@@ -85,7 +100,7 @@ if uploaded_file is not None:
     if st.button("Todo Histórico"):
         start_date = df['DATE'].min()
         end_date = df['DATE'].max()
-        
+         
     if start_date <= end_date:
         filtered_df = df[(df['DATE'] >= pd.to_datetime(start_date)) & (df['DATE'] <= pd.to_datetime(end_date))]
         valor_inicial = filtered_df['BALANCE'].iloc[0]
