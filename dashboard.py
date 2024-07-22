@@ -36,7 +36,7 @@ def calculate_metrics(df):
         "Max Equity": df['EQUITY'].max(),
         "Min Equity": df['EQUITY'].min(),
         "Average Equity": df['EQUITY'].mean(),
-        "Drawdown Maximo" : dd_max.mean()
+        "Drawdown Maximo" : dd_max.max()
     }
     return metrics
 
