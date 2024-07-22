@@ -94,7 +94,7 @@ st.markdown(
 st.markdown(
     """
     <div class="logo">
-        <img id="logo" src="" alt="Logotipo"></img>
+        <img id="logo" src="https://academiadosinvestidores.com.br/wp-content/uploads/2024/07/logo_header-e1720357655763.webp" alt="Logotipo"></img>
     </div>
     """,
     unsafe_allow_html=True
