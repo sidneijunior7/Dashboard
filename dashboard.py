@@ -54,6 +54,7 @@ st.markdown(
     <style>
         .main{
             max-width: 70%;
+            margin: auto;
         }
         /* Identificar o tema claro ou escuro */
         .dark-theme .logo img {
