@@ -87,6 +87,11 @@ if uploaded_file is not None:
     
 # Adicionar um seletor de data
     st.subheader("Filtrar por Data")
+    
+    if st.button("Selecionar Histórico Completo"):
+    start_date = df['DATE'].min()
+    end_date = df['DATE'].max()
+    
     col01, col02 = st.columns(2)
     with col01:
         start_date = st.date_input("Data de Início", df['DATE'].min().date())
