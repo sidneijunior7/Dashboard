@@ -50,7 +50,7 @@ def calculate_metrics(df, start_date, end_date):
 #=========================================
 st.set_page_config(layout="wide")
 
-st.logo(image, *, link="https://academiadosinvestidores.com.br/wp-content/uploads/2024/07/watermark-e1720301832642.png", icon_image=None)
+st.logo(link="https://academiadosinvestidores.com.br/wp-content/uploads/2024/07/watermark-e1720301832642.png")
 
 st.title("Painel de Controle de Investimentos")
 st.subheader("Visão Geral")
