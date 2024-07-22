@@ -52,11 +52,33 @@ st.set_page_config(layout="wide")
 st.markdown(
     """
     <style>
-        .main{max-width: 70%;
+    .main {
+        max-width: 70%;
         margin: auto;
+    }
+    .header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px 0;
+        background-color: #000;
+    }
+    .header img {
+        max-width: 200px;
+    }
     </style>
-    """, unsafe_allow_html=True
-    
+    """,
+    unsafe_allow_html=True
+)
+
+# Adicionar o logotipo no topo
+st.markdown(
+    """
+    <div class="header">
+        <img src="https://academiadosinvestidores.com.br/wp-content/uploads/2024/07/watermark-e1720301832642.png" alt="Logo">
+    </div>
+    """,
+    unsafe_allow_html=True
 )
 st.title("Painel de Controle de Investimentos")
 st.subheader("Visão Geral")
