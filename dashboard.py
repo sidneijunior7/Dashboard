@@ -52,16 +52,26 @@ st.set_page_config(layout="wide")
 st.markdown(
     """
     <style>
+        .main{
+            max-width: 70%;
+        }
+        /* Identificar o tema claro ou escuro */
+        .dark-theme .logo img {
+            content: url("https://academiadosinvestidores.com.br/wp-content/uploads/2024/07/watermark-e1720301832642.png");
+        }
+        .light-theme .logo img {
+            content: url("https://academiadosinvestidores.com.br/wp-content/uploads/2024/07/logo_header-e1720357655763.webp");
+        }
+        /* Estilo geral do logotipo */
         .logo {
+            width: 100%;
             display: flex;
             justify-content: center;
-            align-items: left;
-            background-color: transparent;
-            padding-left: 1em;
-            width: 100%;
+            padding: 10px 0;
         }
         .logo img {
-            max-width: 100%;
+            max-width: 200px;
+            height: auto;
         }
         
     </style>
@@ -73,8 +83,24 @@ st.markdown(
 st.markdown(
     """
     <div class="logo">
-        <img src="https://academiadosinvestidores.com.br/wp-content/uploads/2024/07/watermark-e1720301832642.png" alt="Logo">
+        <img src="" alt="Logotipo">
     </div>
+    """,
+    unsafe_allow_html=True
+)
+
+# Código para detectar o tema e aplicar a classe apropriada
+st.markdown(
+    """
+    <script>
+    const isDarkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const body = document.body;
+    if (isDarkTheme) {
+        body.classList.add('dark-theme');
+    } else {
+        body.classList.add('light-theme');
+    }
+    </script>
     """,
     unsafe_allow_html=True
 )
