@@ -23,7 +23,18 @@ def load_csv(file):
 
 # Função de cálculo de métricas
 def calculate_metrics(df):
+"""
+    # Lista com lucro acumulado
+    lucro_acumulado = [100, 150, 200, 180, 220]
     
+    # Calcular lucro de cada operação
+    lucro_por_operacao = [lucro_acumulado[0]]  # O lucro da primeira operação é o mesmo do lucro acumulado inicial
+    
+    for i in range(1, len(lucro_acumulado)):
+        lucro_por_operacao.append(lucro_acumulado[i] - lucro_acumulado[i - 1])
+    
+    print(lucro_por_operacao)
+"""    
     metrics = {
         "Deposito": df['BALANCE'][0],
         "Lucro Bruto": (df['BALANCE'].iloc[-1]) - (df['BALANCE'][0]),
@@ -57,8 +68,8 @@ if uploaded_file is not None:
 
     # Plotar gráficos
     st.subheader("Gráficos")
-    st.line_chart(df.set_index('DATE')['BALANCE'])
-    st.line_chart(df.set_index('DATE')['EQUITY'])
+    st.line_chart(df.set_index('DATE')['BALANCE'].diff().fillna(['BALANCE'].iloc[0]))
+    st.line_chart(df.set_index('DATE')['EQUITY'].diff().fillna(['EQUITY'].iloc[0]))
 
     # Adicionar um seletor de data
     st.subheader("Filtrar por Data")
@@ -68,7 +79,7 @@ if uploaded_file is not None:
     if start_date <= end_date:
         filtered_df = df[(df['DATE'] >= pd.to_datetime(start_date)) & (df['DATE'] <= pd.to_datetime(end_date))]
         st.write(f"Dados filtrados de {start_date} a {end_date}", filtered_df)
-        st.line_chart(filtered_df.set_index('DATE')['BALANCE'])
-        st.line_chart(filtered_df.set_index('DATE')['EQUITY'])
+        st.line_chart(filtered_df.set_index('DATE')['BALANCE'].diff().fillna(['BALANCE'].iloc[0]))
+        st.line_chart(filtered_df.set_index('DATE')['EQUITY'].diff().fillna(['EQUITY'].iloc[0]))
     else:
         st.error("Erro: A data de início deve ser menor ou igual à data de término.")
