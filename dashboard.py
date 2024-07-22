@@ -56,12 +56,15 @@ st.markdown(
             max-width:75%;
             margin: auto;
             overflow: auto !important;
+            padding: 10px;
             
         }
     </style>
     
     """,unsafe_allow_html=True
 )
+st.markdown('<div class="main">', unsafe_allow_html=True)
+
 st.subheader("BackTest Tools")
 st.write("""
 Este painel apresenta métricas e gráficos importantes para monitorar o desempenho dos seus investimentos.
@@ -116,3 +119,4 @@ if uploaded_file is not None:
     #st.subheader("Gráficos")
     #st.line_chart(df.set_index('DATE')['BALANCE'] - (df['BALANCE'][0]))
 
+st.markdown('</div>', unsafe_allow_html=True)
