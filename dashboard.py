@@ -59,8 +59,11 @@ if uploaded_file is not None:
     
 # Adicionar um seletor de data
     st.subheader("Filtrar por Data")
-    start_date = st.date_input("Data de Início", df['DATE'].min().date())
-    end_date = st.date_input("Data de Término", df['DATE'].max().date())
+    col01, col02 = st.columns(2)
+    with col01:
+        start_date = st.date_input("Data de Início", df['DATE'].min().date())
+    with col02:
+        end_date = st.date_input("Data de Término", df['DATE'].max().date())
 
     if start_date <= end_date:
         filtered_df = df[(df['DATE'] >= pd.to_datetime(start_date)) & (df['DATE'] <= pd.to_datetime(end_date))]
