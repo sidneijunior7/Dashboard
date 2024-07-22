@@ -55,15 +55,13 @@ st.markdown(
         .main{
             max-width:70%;
             margin: auto;
-            overflow: auto !important;
+            overflow: scroll !important;
         }
     </style>
     
     """,unsafe_allow_html=True
 )
-
-st.title("Painel de Controle de Investimentos")
-st.subheader("Visão Geral")
+st.subheader("BackTest Tools")
 st.write("""
 Este painel apresenta métricas e gráficos importantes para monitorar o desempenho dos seus investimentos.
 Aqui você encontrará informações sobre o balanço da conta, drawdown, e outras métricas relevantes.
