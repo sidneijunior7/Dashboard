@@ -27,8 +27,8 @@ def calculate_metrics(df):
     metrics = {
         "Deposito": df['BALANCE'][0],
         "Lucro Bruto": (df['BALANCE'].iloc[-1]) - (df['BALANCE'][0]),
-        "Max Balance": df['BALANCE'].max(),
-        "Min Balance": df['BALANCE'].min(),
+        "Lucro Máximo": df['BALANCE'].max() - df['BALANCE'][0],
+        "Drawdown Relativo": df['BALANCE'].min() - df['BALANCE'][0],
         "Average Balance": df['BALANCE'].mean(),
         "Total Equity": df['EQUITY'].sum(),
         "Max Equity": df['EQUITY'].max(),
