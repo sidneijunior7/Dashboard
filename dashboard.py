@@ -36,19 +36,36 @@ def calculate_metrics(df):
         "Max Equity": df['EQUITY'].max(),
         "Min Equity": df['EQUITY'].min(),
         "Average Equity": df['EQUITY'].mean(),
-        "Drawdown Maximo" : dd_max.max()
+        "Drawdown Maximo" : dd_max.max(),
+        "Drawdown Medio" : dd_max.mean()
     }
     return metrics
 
 # Configuração do Streamlit
-st.title("Trading Dashboard")
-
+st.title("Painel de Controle de Investimentos")
+st.subheader("Visão Geral")
+st.write("""
+Este painel apresenta métricas e gráficos importantes para monitorar o desempenho dos seus investimentos.
+Aqui você encontrará informações sobre o balanço da conta, drawdown, e outras métricas relevantes.
+""")
 # Carregar o arquivo CSV
 uploaded_file = st.file_uploader("Escolha um arquivo CSV", type="csv")
 
 if uploaded_file is not None:
     df = load_csv(uploaded_file)
     #st.write("Visualização dos dados:", df.head())
+    
+# Adicionar um seletor de data
+    st.subheader("Filtrar por Data")
+    start_date = st.date_input("Data de Início", df['DATE'].min().date())
+    end_date = st.date_input("Data de Término", df['DATE'].max().date())
+
+    if start_date <= end_date:
+        filtered_df = df[(df['DATE'] >= pd.to_datetime(start_date)) & (df['DATE'] <= pd.to_datetime(end_date))]
+        valor_inicial = filtered_df['BALANCE'].iloc[0]
+        st.line_chart(filtered_df.set_index('DATE')['BALANCE'] - (valor_inicial))
+    else:
+        st.error("Erro: A data de início deve ser menor ou igual à data de término.")
 
     # Calcular métricas
     metrics = calculate_metrics(df)
@@ -70,14 +87,4 @@ if uploaded_file is not None:
     st.subheader("Gráficos")
     st.line_chart(df.set_index('DATE')['BALANCE'] - (df['BALANCE'][0]))
 
-    # Adicionar um seletor de data
-    st.subheader("Filtrar por Data")
-    start_date = st.date_input("Data de Início", df['DATE'].min().date())
-    end_date = st.date_input("Data de Término", df['DATE'].max().date())
-
-    if start_date <= end_date:
-        filtered_df = df[(df['DATE'] >= pd.to_datetime(start_date)) & (df['DATE'] <= pd.to_datetime(end_date))]
-        valor_inicial = filtered_df['BALANCE'].iloc[0]
-        st.line_chart(filtered_df.set_index('DATE')['BALANCE'] - (valor_inicial))
-    else:
-        st.error("Erro: A data de início deve ser menor ou igual à data de término.")
+    
