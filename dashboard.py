@@ -56,14 +56,14 @@ st.markdown(
             display: flex;
             justify-content: center;
             align-items: left;
-            background-color: #000;
+            background-color: transparent;
             padding-left: 1em;
             width: 100%;
         }
         .logo img {
             max-width: 100%;
         }
-        .content {
+        .main {
             max-width: 70%;
             margin: auto;
         }
@@ -81,9 +81,6 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
-# Adicionar o restante do conteúdo dentro do contêiner de 70% de largura
-st.markdown('<div class="content">', unsafe_allow_html=True)
 
 st.title("Painel de Controle de Investimentos")
 st.subheader("Visão Geral")
