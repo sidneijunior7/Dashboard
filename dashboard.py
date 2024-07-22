@@ -52,20 +52,20 @@ st.set_page_config(layout="wide")
 st.markdown(
     """
     <style>
-    .content {
-        max-width: 70%;
-        margin: auto;
-    }
-    .logo {
-        display: flex;
-        justify-content: center;
-        align-items: left;
-        background-color: #000;
-        padding-left: 1em;
-    }
-    .logo img {
-        max-width: 100%;
-    }
+        .logo {
+            display: flex;
+            justify-content: center;
+            align-items: left;
+            background-color: #000;
+            padding-left: 1em;
+        }
+        .logo img {
+            max-width: 100%;
+        }
+        .content {
+            max-width: 70%;
+            margin: auto;
+        }
     </style>
     """,
     unsafe_allow_html=True
