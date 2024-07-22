@@ -21,25 +21,6 @@ def load_csv(file):
 
     return df
 
-# Função de cálculo de métricas
-# def calculate_metrics(df):
-#     df['DD_MAX'] = df['BALANCE'].cummax()
-#     dd_max = df['DD_MAX']-df['BALANCE']
-    
-#     metrics = {
-#         "Deposito": df['BALANCE'][0],
-#         "Lucro Bruto": (df['BALANCE'].iloc[-1]) - (df['BALANCE'][0]),
-#         "Lucro Máximo": df['BALANCE'].max() - df['BALANCE'][0],
-#         "Drawdown Relativo": df['BALANCE'].min() - df['BALANCE'][0],
-#         "Average Balance": df['BALANCE'].mean(),
-#         "Total Equity": df['EQUITY'].sum(),
-#         "Max Equity": df['EQUITY'].max(),
-#         "Min Equity": df['EQUITY'].min(),
-#         "Average Equity": df['EQUITY'].mean(),
-#         "Drawdown Maximo" : dd_max.max(),
-#         "Drawdown Medio" : dd_max.mean()
-#     }
-#     return metrics
     
 def calculate_metrics(df, start_date, end_date):
     # Converter as datas para datetime
@@ -67,6 +48,7 @@ def calculate_metrics(df, start_date, end_date):
 #=========================================
 # HEADER DO DASHBOARD
 #=========================================
+st.set_page_config(layout="wide")
 st.title("Painel de Controle de Investimentos")
 st.subheader("Visão Geral")
 st.write("""
