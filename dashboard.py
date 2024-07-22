@@ -49,56 +49,9 @@ def calculate_metrics(df, start_date, end_date):
 # HEADER DO DASHBOARD
 #=========================================
 st.set_page_config(layout="wide")
-st.markdown(
-    """
-    <style>
-        
-        .logo {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            padding: 10px 0;
-            box-sizing: border-box;
-        }
-        .logo img {
-            max-width: 200px;
-            height: auto;
-        }
-        
-        
-    </style>
-    """,
-    unsafe_allow_html=True
-)
 
+st.logo(image, *, link="https://academiadosinvestidores.com.br/wp-content/uploads/2024/07/watermark-e1720301832642.png", icon_image=None)
 
-
-# Código para detectar o tema e aplicar a classe apropriada
-st.markdown(
-    """
-   <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const isDarkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const logo = document.getElementById('logo');
-        if (isDarkTheme) {
-            logo.src = "https://academiadosinvestidores.com.br/wp-content/uploads/2024/07/watermark-e1720301832642.png";
-        } else {
-            logo.src = "https://academiadosinvestidores.com.br/wp-content/uploads/2024/07/logo_header-e1720357655763.webp";
-        }
-    });
-    </script>
-    """,
-    unsafe_allow_html=True
-)
-# Adicionar o logotipo no topo
-st.markdown(
-    """
-    <div class="logo">
-        <img id="logo" src="https://academiadosinvestidores.com.br/wp-content/uploads/2024/07/logo_header-e1720357655763.webp" alt="Logotipo"></img>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
 st.title("Painel de Controle de Investimentos")
 st.subheader("Visão Geral")
 st.write("""
