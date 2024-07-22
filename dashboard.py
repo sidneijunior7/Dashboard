@@ -23,7 +23,8 @@ def load_csv(file):
 
 # Função de cálculo de métricas
 def calculate_metrics(df):
- 
+    dd_max = df['BALANCE'].cummax()-df['BALANCE']
+    
     metrics = {
         "Deposito": df['BALANCE'][0],
         "Lucro Bruto": (df['BALANCE'].iloc[-1]) - (df['BALANCE'][0]),
@@ -33,7 +34,8 @@ def calculate_metrics(df):
         "Total Equity": df['EQUITY'].sum(),
         "Max Equity": df['EQUITY'].max(),
         "Min Equity": df['EQUITY'].min(),
-        "Average Equity": df['EQUITY'].mean()
+        "Average Equity": df['EQUITY'].mean(),
+        "Drawdown Maximo" : dd_max.min()
     }
     return metrics
 
@@ -61,7 +63,7 @@ if uploaded_file is not None:
         st.metric(label="Lucro Max: ", value=metrics['Lucro Máximo'])
     with col2:
         st.metric(label="Maior prejuízo: ", value=metrics['Drawdown Relativo'])
-        st.metric(label="Depósito: ", value=metrics['Deposito'])
+        st.metric(label="Drawdown Máximo: ", value=metrics['Drawdown Maximo'])
         
     # Plotar gráficos
     st.subheader("Gráficos")
