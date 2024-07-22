@@ -41,7 +41,9 @@ def calculate_metrics(df):
     }
     return metrics
 
-# Configuração do Streamlit
+#=========================================
+# HEADER DO DASHBOARD
+#=========================================
 st.title("Painel de Controle de Investimentos")
 st.subheader("Visão Geral")
 st.write("""
@@ -68,7 +70,7 @@ if uploaded_file is not None:
         st.error("Erro: A data de início deve ser menor ou igual à data de término.")
 
     # Calcular métricas
-    metrics = calculate_metrics(df)
+    metrics = calculate_metrics(filtered_df)
 
     # Exibir métricas
     st.subheader("Métricas Calculadas")
@@ -84,7 +86,7 @@ if uploaded_file is not None:
         st.metric(label="Drawdown Máximo: ", value=metrics['Drawdown Maximo'])
         
     # Plotar gráficos
-    st.subheader("Gráficos")
-    st.line_chart(df.set_index('DATE')['BALANCE'] - (df['BALANCE'][0]))
+    #st.subheader("Gráficos")
+    #st.line_chart(df.set_index('DATE')['BALANCE'] - (df['BALANCE'][0]))
 
     
