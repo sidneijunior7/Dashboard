@@ -23,18 +23,7 @@ def load_csv(file):
 
 # Função de cálculo de métricas
 def calculate_metrics(df):
-"""
-    # Lista com lucro acumulado
-    lucro_acumulado = [100, 150, 200, 180, 220]
-    
-    # Calcular lucro de cada operação
-    lucro_por_operacao = [lucro_acumulado[0]]  # O lucro da primeira operação é o mesmo do lucro acumulado inicial
-    
-    for i in range(1, len(lucro_acumulado)):
-        lucro_por_operacao.append(lucro_acumulado[i] - lucro_acumulado[i - 1])
-    
-    print(lucro_por_operacao)
-"""    
+ 
     metrics = {
         "Deposito": df['BALANCE'][0],
         "Lucro Bruto": (df['BALANCE'].iloc[-1]) - (df['BALANCE'][0]),
