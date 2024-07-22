@@ -24,8 +24,9 @@ def load_csv(file):
 # Função de cálculo de métricas
 def calculate_metrics(df):
     metrics = {
-        "Deposito": df['BALANCE'][1],
-        "Total Balance": df['BALANCE'].sum(),
+        depo = df['BALANCE'][0],
+        "Deposito": df['BALANCE'][0],
+        "Lucro Bruto": (df['BALANCE']-depo).sum(),
         "Max Balance": df['BALANCE'].max(),
         "Min Balance": df['BALANCE'].min(),
         "Average Balance": df['BALANCE'].mean(),
