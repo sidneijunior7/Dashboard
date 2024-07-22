@@ -94,7 +94,7 @@ st.markdown(
 # Código para detectar o tema e aplicar a classe apropriada
 st.markdown(
     """
-    <script>
+   <script>
     const isDarkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
     const body = document.body;
     if (isDarkTheme) {
@@ -106,7 +106,11 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
+st.markdown(
+    """
+    <div class="main">
+    """, unsafe_allow_html=True
+)
 st.title("Painel de Controle de Investimentos")
 st.subheader("Visão Geral")
 st.write("""
