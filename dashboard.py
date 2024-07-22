@@ -23,7 +23,8 @@ def load_csv(file):
 
 # Função de cálculo de métricas
 def calculate_metrics(df):
-    dd_max = df['BALANCE'].cummax()-df['BALANCE']
+    df['DD_MAX'] = df['BALANCE'].cummax()
+    dd_max = df['DD_MAX']-df['BALANCE']
     
     metrics = {
         "Deposito": df['BALANCE'][0],
