@@ -52,7 +52,7 @@ st.set_page_config(layout="wide")
 st.markdown(
     """
     <style>
-        .main{
+        .content{
             max-width: 70%;
             margin: auto;
             overflow: auto;
@@ -108,7 +108,7 @@ st.markdown(
 )
 st.markdown(
     """
-    <div class="main">
+    <div class="content">
     """, unsafe_allow_html=True
 )
 st.title("Painel de Controle de Investimentos")
