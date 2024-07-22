@@ -52,12 +52,12 @@ st.set_page_config(layout="wide")
 st.markdown(
     """
     <style>
-        .conteudo{
+        #conteudo{
             max-width:70%;
             margin: auto;
         }
     </style>
-    <div class="conteudo">
+    <div id="conteudo">
     """,unsafe_allow_html=True
 )
 
