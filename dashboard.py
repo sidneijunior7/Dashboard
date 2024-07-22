@@ -76,7 +76,7 @@ if uploaded_file is not None:
     metrics = calculate_metrics(df)
 
     # Exibir métricas
-    st.subheader("Métricas Calculadas")
+    st.subheader("Dados Históricos")
     #for key, value in metrics.items():
     #    st.write(f"{key}: {value}")
 
@@ -85,7 +85,7 @@ if uploaded_file is not None:
         st.metric(label="Lucro: ", value=metrics['Lucro Bruto'])
         st.metric(label="Lucro Max: ", value=metrics['Lucro Máximo'])
     with col2:
-        st.metric(label="Maior prejuízo: ", value=metrics['Drawdown Relativo'])
+        st.metric(label="Drawdown Médio: ", value=metrics['Drawdown Medio'])
         st.metric(label="Drawdown Máximo: ", value=metrics['Drawdown Maximo'])
         
     # Plotar gráficos
