@@ -49,6 +49,15 @@ def calculate_metrics(df, start_date, end_date):
 # HEADER DO DASHBOARD
 #=========================================
 st.set_page_config(layout="wide")
+st.markdown(
+    """
+    <style>
+        .main{max-width: 70%;
+        margin: auto;
+    </style
+    """,
+    
+)
 st.title("Painel de Controle de Investimentos")
 st.subheader("Visão Geral")
 st.write("""
