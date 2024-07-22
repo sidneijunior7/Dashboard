@@ -42,10 +42,36 @@ def plot_annual_capital_curves(df):
 # Streamlit UI
 st.title('Daytrade Backtest Dashboard')
 
-uploaded_file = st.file_uploader("Selecione um arquivo CSV", type="csv")
+# Função para carregar e processar o arquivo CSV
+def load_csv(file):
+    # Tentar ler o arquivo com a codificação 'utf-8'
+    try:
+        df = pd.read_csv(file, encoding='utf-8')
+    except UnicodeDecodeError:
+        # Se falhar, tentar com a codificação 'latin1'
+        try:
+            df = pd.read_csv(file, encoding='latin1')
+        except UnicodeDecodeError:
+            st.error("Error: Unable to decode the file. Please check the file encoding.")
+            st.stop()
+
+    # Renomear as colunas
+    df.rename(columns={'<DATE>': 'DATE', '<BALANCE>': 'BALANCE', '<EQUITY>': 'EQUITY'}, inplace=True)
+    
+    # Converter a coluna 'DATE' para datetime
+    try:
+        df['DATE'] = pd.to_datetime(df['DATE'], format='%Y.%m.%d %H.%M')
+    except ValueError:
+        st.error("Error: Date format is incorrect. Please check the date format in the file.")
+        st.stop()
+
+    return df
+
+# Carregar o arquivo CSV
+uploaded_file = st.file_uploader("Choose a file")
 
 if uploaded_file is not None:
-    df = pd.read_csv(uploaded_file, parse_dates=['Date'])
+    df = load_csv(uploaded_file)
     st.write("Data preview:", df.head())
 
     # Calculate metrics
