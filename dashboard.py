@@ -26,7 +26,7 @@ def calculate_metrics(df):
     lucro[] = df['BALANCE'] - df['BALANCE'][0]
     metrics = {
         "Deposito": df['BALANCE'][0],
-        "Lucro Bruto": lucro[].sum(),
+        "Lucro Bruto": df['BALANCE']-df['BALANCE'][-1],
         "Max Balance": df['BALANCE'].max(),
         "Min Balance": df['BALANCE'].min(),
         "Average Balance": df['BALANCE'].mean(),
