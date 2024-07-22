@@ -67,7 +67,7 @@ def calculate_metrics(df, start_date, end_date):
         "Drawdown Maximo": dd_max.max(),
         "Drawdown Medio": dd_max.mean()
     }
-return metrics
+    return metrics
 
 #=========================================
 # HEADER DO DASHBOARD
