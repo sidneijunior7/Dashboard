@@ -3,16 +3,11 @@ import streamlit as st
 
 # Função para carregar e processar o arquivo CSV
 def load_csv(file):
-    # Tentar ler o arquivo com a codificação 'utf-8'
     try:
         df = pd.read_csv(file, encoding='utf-8', sep='\t')
     except UnicodeDecodeError:
-        # Se falhar, tentar com a codificação 'latin1'
-        try:
-            df = pd.read_csv(file, encoding='latin1', sep='\t')
-        except UnicodeDecodeError:
-            st.error("Error: Unable to decode the file. Please check the file encoding.")
-            st.stop()
+        st.error("Error: Unable to decode the file with 'utf-8' encoding. Please check the file encoding.")
+        st.stop()
 
     # Renomear as colunas
     df.rename(columns={'<DATE>': 'DATE', '<BALANCE>': 'BALANCE', '<EQUITY>': 'EQUITY'}, inplace=True)
