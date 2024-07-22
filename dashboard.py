@@ -54,6 +54,8 @@ st.markdown(
     <style>
         .main{
             max-width:70%;
+            margin: auto;
+            overflow: auto;
         }
     </style>
     """,unsafe_allow_html=True
