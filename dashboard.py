@@ -45,7 +45,15 @@ st.title('Daytrade Backtest Dashboard')
 uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
 
 if uploaded_file is not None:
-    df = pd.read_csv(uploaded_file, parse_dates=['<DATE>'], date_parser=lambda x: pd.to_datetime(x, format='%Y.%m.%d %H.%M'))
+    try:
+        df = pd.read_csv(uploaded_file, encoding='utf-8', parse_dates=['<DATE>'], date_parser=lambda x: pd.to_datetime(x, format='%Y.%m.%d %H:%M'))
+    except UnicodeDecodeError:
+        try:
+            df = pd.read_csv(uploaded_file, encoding='latin1', parse_dates=['<DATE>'], date_parser=lambda x: pd.to_datetime(x, format='%Y.%m.%d %H:%M'))
+        except UnicodeDecodeError:
+            st.error("Error: Unable to decode the file. Please check the file encoding.")
+            st.stop()
+
     df.rename(columns={'<DATE>': 'DATE', '<BALANCE>': 'BALANCE', '<EQUITY>': 'EQUITY'}, inplace=True)
     st.write("Data preview:", df.head())
 
