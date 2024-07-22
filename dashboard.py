@@ -59,10 +59,10 @@ st.markdown(
         }
         /* Identificar o tema claro ou escuro */
         .dark-theme .logo img {
-            content: url("https://academiadosinvestidores.com.br/wp-content/uploads/2024/07/watermark-e1720301832642.png");
+            content: url("https://academiadosinvestidores.com.br/wp-content/uploads/2024/07/watermark-e1720301832642.png") !important;
         }
         .light-theme .logo img {
-            content: url("https://academiadosinvestidores.com.br/wp-content/uploads/2024/07/logo_header-e1720357655763.webp");
+            content: url("https://academiadosinvestidores.com.br/wp-content/uploads/2024/07/logo_header-e1720357655763.webp") !important;
         }
         /* Estilo geral do logotipo */
         .logo {
@@ -72,7 +72,7 @@ st.markdown(
             padding: 10px 0;
         }
         .logo img {
-            max-width: 200px;
+            max-width: auto;
             height: auto;
         }
         
