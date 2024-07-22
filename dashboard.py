@@ -1,6 +1,5 @@
 import pandas as pd
 import streamlit as st
-from streamlit_navigation_bar import st_navbar
 
 # Função para carregar e processar o arquivo CSV
 def load_csv(file):
@@ -43,6 +42,8 @@ def calculate_metrics(df, start_date, end_date):
         "Drawdown Relativo": filtered_df['BALANCE'].min() - filtered_df['BALANCE'].iloc[0],
         "Drawdown Maximo": round(dd_max.max(),2),
         "Drawdown Medio": round(dd_max.mean(),2)
+        #Volatilidade: Desvio padrão/media
+        
     }
     return metrics
 
@@ -54,15 +55,9 @@ st.set_page_config(
     page_icon="🧊",
     layout="wide",
     initial_sidebar_state="expanded",
-    menu_items={
-        'Get Help': 'https://www.extremelycoolapp.com/help',
-        'Report a bug': "https://www.extremelycoolapp.com/bug",
-        'About': "# This is a header. This is an *extremely* cool app!"
-    }
+    
 )
 
-page = st_navbar(["Home", "Documentation", "Examples", "Community", "About"])
-st.write(page)
 #=================================
 # Adicionar a sidebar
 #=================================
