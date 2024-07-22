@@ -52,12 +52,12 @@ st.set_page_config(layout="wide")
 st.markdown(
     """
     <style>
-        .content{
+        .conteudo{
             max-width:70%;
             margin: auto;
         }
     </style>
-    <div class="content">
+    <div class="conteudo">
     """,unsafe_allow_html=True
 )
 
@@ -115,4 +115,4 @@ if uploaded_file is not None:
     # Plotar gráficos
     #st.subheader("Gráficos")
     #st.line_chart(df.set_index('DATE')['BALANCE'] - (df['BALANCE'][0]))
-   
+   st.markdown('</div>',unsafe_allow_html=True)
