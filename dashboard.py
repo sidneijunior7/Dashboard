@@ -48,22 +48,17 @@ def calculate_metrics(df, start_date, end_date):
 #=========================================
 # HEADER DO DASHBOARD
 #=========================================
-st.set_page_config(layout="wide")
-st.markdown(
-    """
-    <style>
-        body{
-            max-width:75% !important;
-            margin: auto;
-            overflow: auto !important;
-            
-        }
-    </style>
-    
-    """,unsafe_allow_html=True
+st.set_page_config(
+    page_title="BackTest Tools for Traders",
+    page_icon="🧊",
+    layout="wide",
+    initial_sidebar_state="expanded",
+    menu_items={
+        'Get Help': 'https://www.extremelycoolapp.com/help',
+        'Report a bug': "https://www.extremelycoolapp.com/bug",
+        'About': "# This is a header. This is an *extremely* cool app!"
+    }
 )
-
-
 st.subheader("BackTest Tools")
 st.write("""
 Este painel apresenta métricas e gráficos importantes para monitorar o desempenho dos seus investimentos.
