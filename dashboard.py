@@ -66,7 +66,7 @@ def load_csv(file):
             "Average Equity": filtered_df['EQUITY'].mean(),
             "Drawdown Maximo": dd_max.max(),
             "Drawdown Medio": dd_max.mean()
-    }
+        }
     return metrics
 
 #=========================================
