@@ -26,7 +26,7 @@ def calculate_metrics(df):
     df['DD_MAX'] = df['BALANCE'].cummax()
     dd_max = df['DD_MAX']-df['BALANCE']
     
-    metrics = {
+    '''metrics = {
         "Deposito": df['BALANCE'][0],
         "Lucro Bruto": (df['BALANCE'].iloc[-1]) - (df['BALANCE'][0]),
         "Lucro Máximo": df['BALANCE'].max() - df['BALANCE'][0],
@@ -38,6 +38,34 @@ def calculate_metrics(df):
         "Average Equity": df['EQUITY'].mean(),
         "Drawdown Maximo" : dd_max.max(),
         "Drawdown Medio" : dd_max.mean()
+    }
+    return metrics'''
+    
+    def calculate_metrics(df, start_date, end_date):
+    # Converter as datas para datetime
+    start_date = pd.to_datetime(start_date)
+    end_date = pd.to_datetime(end_date)
+    
+    # Filtrar o DataFrame com base nas datas selecionadas
+    filtered_df = df[(df['DATE'] >= start_date) & (df['DATE'] <= end_date)]
+    
+    # Calcular o máximo acumulado e drawdown
+    filtered_df['DD_MAX'] = filtered_df['BALANCE'].cummax()
+    dd_max = filtered_df['DD_MAX'] - filtered_df['BALANCE']
+    
+    # Calcular as métricas
+    metrics = {
+        "Deposito": filtered_df['BALANCE'].iloc[0],
+        "Lucro Bruto": filtered_df['BALANCE'].iloc[-1] - filtered_df['BALANCE'].iloc[0],
+        "Lucro Máximo": filtered_df['BALANCE'].max() - filtered_df['BALANCE'].iloc[0],
+        "Drawdown Relativo": filtered_df['BALANCE'].min() - filtered_df['BALANCE'].iloc[0],
+        "Average Balance": filtered_df['BALANCE'].mean(),
+        "Total Equity": filtered_df['EQUITY'].sum(),
+        "Max Equity": filtered_df['EQUITY'].max(),
+        "Min Equity": filtered_df['EQUITY'].min(),
+        "Average Equity": filtered_df['EQUITY'].mean(),
+        "Drawdown Maximo": dd_max.max(),
+        "Drawdown Medio": dd_max.mean()
     }
     return metrics
 
@@ -73,7 +101,7 @@ if uploaded_file is not None:
         st.error("Erro: A data de início deve ser menor ou igual à data de término.")
 
     # Calcular métricas
-    metrics = calculate_metrics(df)
+    metrics = calculate_metrics(df, start_date, end_date)
 
     # Exibir métricas
     st.subheader("Dados Históricos")
