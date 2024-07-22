@@ -115,4 +115,4 @@ if uploaded_file is not None:
     # Plotar gráficos
     #st.subheader("Gráficos")
     #st.line_chart(df.set_index('DATE')['BALANCE'] - (df['BALANCE'][0]))
-   st.markdown('</div>',unsafe_allow_html=True)
+    st.markdown('</div>',unsafe_allow_html=True)
