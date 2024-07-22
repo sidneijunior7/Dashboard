@@ -22,11 +22,11 @@ def load_csv(file):
     return df
 
 # Função de cálculo de métricas
-def calculate_metrics(df):
+'''def calculate_metrics(df):
     df['DD_MAX'] = df['BALANCE'].cummax()
     dd_max = df['DD_MAX']-df['BALANCE']
     
-    '''metrics = {
+    metrics = {
         "Deposito": df['BALANCE'][0],
         "Lucro Bruto": (df['BALANCE'].iloc[-1]) - (df['BALANCE'][0]),
         "Lucro Máximo": df['BALANCE'].max() - df['BALANCE'][0],
