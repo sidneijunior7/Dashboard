@@ -1,5 +1,6 @@
 import pandas as pd
 import streamlit as st
+from streamlit_navigation_bar import st_navbar
 
 # Função para carregar e processar o arquivo CSV
 def load_csv(file):
@@ -46,7 +47,7 @@ def calculate_metrics(df, start_date, end_date):
     return metrics
 
 #=========================================
-# HEADER DO DASHBOARD
+# CONFIG DO DASHBOARD
 #=========================================
 st.set_page_config(
     page_title="BackTest Tools for Traders",
@@ -60,7 +61,11 @@ st.set_page_config(
     }
 )
 
+page = st_navbar(["Home", "Documentation", "Examples", "Community", "About"])
+st.write(page)
+#=================================
 # Adicionar a sidebar
+#=================================
 st.sidebar.title("Menu Lateral")
 
 # Adicionar itens à sidebar
@@ -76,7 +81,12 @@ elif selected_option == "Sobre":
 elif selected_option == "Contato":
     st.title("Contato")
     st.write("Esta é a seção de Contato. Adicione informações de contato ou um formulário aqui.")
-
+#=================================
+# Fim da sidebar
+#=================================
+#=========================================
+# HEADER DO DASHBOARD
+#=========================================
 st.subheader("BackTest Tools")
 st.write("""
 Este painel apresenta métricas e gráficos importantes para monitorar o desempenho dos seus investimentos.
