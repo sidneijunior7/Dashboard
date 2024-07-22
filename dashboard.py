@@ -58,10 +58,10 @@ st.markdown(
             overflow: auto;
         }
         /* Identificar o tema claro ou escuro */
-        .dark-theme .logo img {
+        .dark-theme .logo::before {
             content: url("https://academiadosinvestidores.com.br/wp-content/uploads/2024/07/watermark-e1720301832642.png") !important;
         }
-        .light-theme .logo img {
+        .light-theme .logo::before {
             content: url("https://academiadosinvestidores.com.br/wp-content/uploads/2024/07/logo_header-e1720357655763.webp") !important;
         }
         /* Estilo geral do logotipo */
