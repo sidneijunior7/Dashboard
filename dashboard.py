@@ -42,30 +42,30 @@ def load_csv(file):
     return metrics'''
     
     def calculate_metrics(df, start_date, end_date):
-    # Converter as datas para datetime
-    start_date = pd.to_datetime(start_date)
-    end_date = pd.to_datetime(end_date)
-    
-    # Filtrar o DataFrame com base nas datas selecionadas
-    filtered_df = df[(df['DATE'] >= start_date) & (df['DATE'] <= end_date)]
-    
-    # Calcular o máximo acumulado e drawdown
-    filtered_df['DD_MAX'] = filtered_df['BALANCE'].cummax()
-    dd_max = filtered_df['DD_MAX'] - filtered_df['BALANCE']
-    
-    # Calcular as métricas
-    metrics = {
-        "Deposito": filtered_df['BALANCE'].iloc[0],
-        "Lucro Bruto": filtered_df['BALANCE'].iloc[-1] - filtered_df['BALANCE'].iloc[0],
-        "Lucro Máximo": filtered_df['BALANCE'].max() - filtered_df['BALANCE'].iloc[0],
-        "Drawdown Relativo": filtered_df['BALANCE'].min() - filtered_df['BALANCE'].iloc[0],
-        "Average Balance": filtered_df['BALANCE'].mean(),
-        "Total Equity": filtered_df['EQUITY'].sum(),
-        "Max Equity": filtered_df['EQUITY'].max(),
-        "Min Equity": filtered_df['EQUITY'].min(),
-        "Average Equity": filtered_df['EQUITY'].mean(),
-        "Drawdown Maximo": dd_max.max(),
-        "Drawdown Medio": dd_max.mean()
+        # Converter as datas para datetime
+        start_date = pd.to_datetime(start_date)
+        end_date = pd.to_datetime(end_date)
+        
+        # Filtrar o DataFrame com base nas datas selecionadas
+        filtered_df = df[(df['DATE'] >= start_date) & (df['DATE'] <= end_date)]
+        
+        # Calcular o máximo acumulado e drawdown
+        filtered_df['DD_MAX'] = filtered_df['BALANCE'].cummax()
+        dd_max = filtered_df['DD_MAX'] - filtered_df['BALANCE']
+        
+        # Calcular as métricas
+        metrics = {
+            "Deposito": filtered_df['BALANCE'].iloc[0],
+            "Lucro Bruto": filtered_df['BALANCE'].iloc[-1] - filtered_df['BALANCE'].iloc[0],
+            "Lucro Máximo": filtered_df['BALANCE'].max() - filtered_df['BALANCE'].iloc[0],
+            "Drawdown Relativo": filtered_df['BALANCE'].min() - filtered_df['BALANCE'].iloc[0],
+            "Average Balance": filtered_df['BALANCE'].mean(),
+            "Total Equity": filtered_df['EQUITY'].sum(),
+            "Max Equity": filtered_df['EQUITY'].max(),
+            "Min Equity": filtered_df['EQUITY'].min(),
+            "Average Equity": filtered_df['EQUITY'].mean(),
+            "Drawdown Maximo": dd_max.max(),
+            "Drawdown Medio": dd_max.mean()
     }
     return metrics
 
