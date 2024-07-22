@@ -54,8 +54,8 @@ st.markdown(
     <style>
         .main{max-width: 70%;
         margin: auto;
-    </style
-    """,
+    </style>
+    """, unsafe_allow_html=True
     
 )
 st.title("Painel de Controle de Investimentos")
