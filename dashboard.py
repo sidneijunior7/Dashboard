@@ -70,7 +70,7 @@ if uploaded_file is not None:
         st.error("Erro: A data de início deve ser menor ou igual à data de término.")
 
     # Calcular métricas
-    metrics = calculate_metrics(filtered_df)
+    metrics = calculate_metrics(df)
 
     # Exibir métricas
     st.subheader("Métricas Calculadas")
