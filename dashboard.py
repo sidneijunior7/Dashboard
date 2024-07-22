@@ -79,11 +79,11 @@ st.markdown(
    <script>
     document.addEventListener("DOMContentLoaded", function() {
         const isDarkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const logo = document.getElementById('logo');
+        const logo = document.getElementById('logomarca');
         if (isDarkTheme) {
-            logo.src = "https://academiadosinvestidores.com.br/wp-content/uploads/2024/07/watermark-e1720301832642.png";
+            logomarca.src = "https://academiadosinvestidores.com.br/wp-content/uploads/2024/07/watermark-e1720301832642.png";
         } else {
-            logo.src = "https://academiadosinvestidores.com.br/wp-content/uploads/2024/07/logo_header-e1720357655763.webp";
+            logomarca.src = "https://academiadosinvestidores.com.br/wp-content/uploads/2024/07/logo_header-e1720357655763.webp";
         }
     });
     </script>
@@ -94,7 +94,7 @@ st.markdown(
 st.markdown(
     """
     <div class="logo">
-        <img id="logo" src="https://academiadosinvestidores.com.br/wp-content/uploads/2024/07/logo_header-e1720357655763.webp" alt="Logotipo"></img>
+        <img id="logomarca" src="https://academiadosinvestidores.com.br/wp-content/uploads/2024/07/logo_header-e1720357655763.webp" alt="Logotipo"></img>
     </div>
     """,
     unsafe_allow_html=True
