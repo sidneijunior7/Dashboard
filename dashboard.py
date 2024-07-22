@@ -45,7 +45,7 @@ st.title('Daytrade Backtest Dashboard')
 uploaded_file = st.file_uploader("SELECIONE UM ARQUIVO CSV", type="csv")
 
 if uploaded_file is not None:
-    df = pd.read_csv(uploaded_file, encoding="utf-16", parse_dates=['<DATE>'], date_parser=lambda x: pd.to_datetime(x, format='%Y.%m.%d %H.%M'))
+    df = pd.read_csv(uploaded_file, encoding="utf-16")
     df.rename(columns={'<DATE>': 'DATA', '<BALANCE>': 'BALANCO', '<EQUITY>': 'CAPITAL LIQUIDO'}, inplace=True)
     st.write("Data preview:", df.head())
 
