@@ -63,10 +63,7 @@ st.markdown(
         .logo img {
             max-width: 100%;
         }
-        .main {
-            max-width: 70%;
-            margin: auto;
-        }
+        
     </style>
     """,
     unsafe_allow_html=True
