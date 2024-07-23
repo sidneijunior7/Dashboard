@@ -40,27 +40,20 @@ def calculate_metrics(df, start_date, end_date):
         "Lucro Bruto": filtered_df['BALANCE'].iloc[-1] - filtered_df['BALANCE'].iloc[0],
         "Lucro Máximo": filtered_df['BALANCE'].max() - filtered_df['BALANCE'].iloc[0],
         "Drawdown Relativo": filtered_df['BALANCE'].min() - filtered_df['BALANCE'].iloc[0],
-        "Drawdown Maximo": round(dd_max.max(),2),
-        "Drawdown Medio": round(dd_max.mean(),2)
-        #Volatilidade: Desvio padrão/media
-        
+        "Drawdown Maximo": round(dd_max.max(), 2),
+        "Drawdown Medio": round(dd_max.mean(), 2)
     }
     return metrics
 
-#=========================================
-# CONFIG DO DASHBOARD
-#=========================================
+# Configurar o dashboard
 st.set_page_config(
     page_title="BackTest Tools for Traders",
     page_icon="🧊",
     layout="wide",
     initial_sidebar_state="expanded",
-    
 )
 
-#=================================
 # Adicionar a sidebar
-#=================================
 st.sidebar.title("Menu Lateral")
 
 # Adicionar itens à sidebar
@@ -76,25 +69,21 @@ elif selected_option == "Sobre":
 elif selected_option == "Contato":
     st.title("Contato")
     st.write("Esta é a seção de Contato. Adicione informações de contato ou um formulário aqui.")
-#=================================
-# Fim da sidebar
-#=================================
-#=========================================
-# HEADER DO DASHBOARD
-#=========================================
+
+# Header do dashboard
 st.subheader("BackTest Tools")
 st.write("""
 Este painel apresenta métricas e gráficos importantes para monitorar o desempenho dos seus investimentos.
 Aqui você encontrará informações sobre o balanço da conta, drawdown, e outras métricas relevantes.
 """)
+
 # Carregar o arquivo CSV
 uploaded_file = st.file_uploader("Escolha um arquivo CSV", type="csv")
 
 if uploaded_file is not None:
     df = load_csv(uploaded_file)
-    #st.write("Visualização dos dados:", df.head())
     
-# Adicionar um seletor de data
+    # Adicionar um seletor de data
     st.subheader("Filtrar por Data")
     col01, col02 = st.columns(2)
     with col01:
@@ -109,7 +98,7 @@ if uploaded_file is not None:
     if start_date <= end_date:
         filtered_df = df[(df['DATE'] >= pd.to_datetime(start_date)) & (df['DATE'] <= pd.to_datetime(end_date))]
         valor_inicial = filtered_df['BALANCE'].iloc[0]
-        st.line_chart(filtered_df.set_index('DATE')['BALANCE'] - (valor_inicial))
+        st.line_chart(filtered_df.set_index('DATE')['BALANCE'] - valor_inicial)
     else:
         st.error("Erro: A data de início deve ser menor ou igual à data de término.")
 
@@ -118,17 +107,10 @@ if uploaded_file is not None:
 
     # Exibir métricas
     st.subheader("Dados Históricos")
-    #for key, value in metrics.items():
-    #    st.write(f"{key}: {value}")
-
-    col1, col2 = st.columns(2);
+    col1, col2 = st.columns(2)
     with col1:
         st.metric(label="Lucro: ", value=metrics['Lucro Bruto'])
         st.metric(label="Lucro Max: ", value=metrics['Lucro Máximo'])
     with col2:
         st.metric(label="Drawdown Médio: ", value=metrics['Drawdown Medio'])
         st.metric(label="Drawdown Máximo: ", value=metrics['Drawdown Maximo'])
-        
-    # Plotar gráficos
-    #st.subheader("Gráficos")
-    #st.line_chart(df.set_index('DATE')['BALANCE'] - (df['BALANCE'][0]))
